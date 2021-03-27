@@ -1,0 +1,113 @@
+@font-face {
+
+    font-family: charter;
+    src: url('../fonts/charter-regular.otf');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+
+    font-family: charter;
+    src: url('../fonts/charter-italic.otf');
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+
+    font-family: charter;
+    src: url('../fonts/charter-bold.otf');
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+
+    font-family: charter;
+    src: url('../fonts/charter-bold-italic.otf');
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+ :root { /*es parecido a lo que es la etiqueta html, todo lo que quieras colocar en html se hace aca */
+
+    font-size: 16px;
+    --gray30: #212121;  /* asi se crean las variables en css*/
+    --gray20: #212429;
+    --gray10: #616161;
+}
+
+body {
+
+    color: var(--gray30);
+    font-family: 'Roboto', sans-serif;
+
+    /* font-family: charter; */
+}
+
+a {
+
+    color:var(--gray30);
+}
+
+header {
+    /* --gray10: red; (en caso que tengas que modificar la variable en cierta parte solamente) */
+    font-size: 14px;
+    color: var(--gray10);
+}
+
+header a{ /* es para referirse al a directamente */
+
+    color: var(--gray10);
+    text-decoration: none;
+}
+
+header a:hover { /* hover es cuando pasas encima de un texto o link como los a*/
+
+    color: var(--gray30);
+}
+
+nav details summary { /* es para el titulo del menu */
+
+    font-weight: bold;
+}
+
+h1 {
+
+    font-size: 60px;
+    /* font-size: 3.75en;  esto seria la unidad en em, seria 60/16 que es el tamaño de la fuente por default*/
+}
+
+h2 {
+
+    font-size: 2em; /* seria similar a 32px 32/16 = 2em */
+}
+
+h3 {
+
+    font-size: 1.5em; /*  seria similar a 24 px */
+}
+
+.hero {
+    background-image: linear-gradient(to top,rgba(255, 255, 255, .3), transparent), url('../images/pattern.png');
+    /* el background-image sirve para mezclar 2 imagenes de fondo, to top se refiere que viene desde abajo el bg */
+    height: 350px;
+    /* background-repeat: no-repeat; esto es para colocar que no se repita la imagen*/
+    /* background-position: left 50px bottom 50px; es para colocar el background en una posicion*/
+    /* background-size: cover; el size es para modificar el tamaño del bg y el cover es para colocarlo acorde*/
+}
+
+ h3::before {  /* colocando pseudoelemento, aqui iria la numeracion */
+    content: '-';
+}
+
+h3::after { /* colocando pseudoelemento, aqui iria la raya de bajo de los titulos*/
+
+    content: '';
+    width: 32px;
+    height: 4px;
+    background: var(--gray30);
+    display: inline-block;
+}
