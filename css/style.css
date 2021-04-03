@@ -43,6 +43,7 @@ body {
 
     color: var(--gray30);
     font-family: 'Roboto', sans-serif;
+    margin: 0;
 
     /* font-family: charter; */
 }
@@ -78,16 +79,76 @@ h1 {
 
     font-size: 60px;
     /* font-size: 3.75en;  esto seria la unidad en em, seria 60/16 que es el tamaño de la fuente por default*/
+    margin-top: 64px;
+    margin-bottom: 16px;
+    /* margin-left: 20px;
+    margin-right: 10px; */
+
+}
+
+/* h1 + p {
+    viene siendo un selector de herencia, agarra el hermano solamente, 
+    en caso que querer agarrar todos los hermanos se coloca h1 ~ p 
+
+    margin-bottom: 64px;
+} */
+
+hr {
+    margin: 64px 0;
+    background: red;
 }
 
 h2 {
 
     font-size: 2em; /* seria similar a 32px 32/16 = 2em */
+     margin: 64px 0 40px; /* serian 64px para arriba, 0 a los lados y 40px para abajo */
+    font-weight: normal;
 }
 
 h3 {
-
     font-size: 1.5em; /*  seria similar a 24 px */
+    margin-top: 16px;
+    margin-bottom: 24px;
+    font-weight: normal;
+}
+
+pre {
+
+    background: #2e5ffe;
+    padding: 40px;
+    font-family: 'Roboto';
+    line-height: 24px;
+}
+
+blockquote {
+    font-size: 24px;
+    margin: 32px 0;
+    padding-left: 16px;
+    line-height: 24px;
+    border-left: 4px solid var(--gray30);
+
+    /* bordes */
+    /* border-top: 1px solid pink;
+    border-top-color: aqua;
+    border-top-style: dashed; no se usan mucho
+    border-radius: 50px 100px 10px 0; para los bordes redondos */
+}
+
+blockquote span {
+    color: var(--gray10);
+}
+
+blockquote span::before {
+    content: '-';
+}
+
+ .debug { /*tecnicas para ver que selector estas agarrando y si es el correcto */
+        /* se tiene que colocar la class debug por supuesto */
+        
+    /* box-shadow: inset 0 0 0 50px red; */
+    outline: 3px solid red;
+    /* background: red;
+    border: 1px solid red !important; */
 }
 
 .hero {
@@ -99,11 +160,53 @@ h3 {
     /* background-size: cover; el size es para modificar el tamaño del bg y el cover es para colocarlo acorde*/
 }
 
- h3::before {  /* colocando pseudoelemento, aqui iria la numeracion */
-    content: '-';
+.section-content {
+    
+    margin-top: 164px;
 }
 
-h3::after { /* colocando pseudoelemento, aqui iria la raya de bajo de los titulos*/
+ .section-content:first-of-type {  /* es para seleccionar solamente el primer section*/
+
+    /* background: red; */
+    margin: 0;
+}
+
+.section-content ol li {
+    /* esto viene seleccionando solamente las ol del li dentro del section content*/
+    line-height: 24px; 
+}
+
+.section-content ul li {
+    /* esto viene seleccionando solamente las ul del li dentro del section content*/
+    margin-bottom: 16px; 
+}
+
+.section-content + hr {
+    display: none;
+}
+
+.section-content img {
+
+    /* img que estan dentro del section content */
+
+    margin-top: 40px;
+}
+
+.section-content {
+
+    counter-reset: titleList;
+}
+
+.section-content h3 {
+    counter-increment: titleList;
+    padding-bottom: 4px;
+}
+
+.section-content h3::before {  /* colocando pseudoelemento, aqui iria la numeracion */
+    content: counter(titleList, decimal) '. ';
+}
+
+.section-content h3::after { /* colocando pseudoelemento, aqui iria la raya de bajo de los titulos*/
 
     content: '';
     width: 32px;
