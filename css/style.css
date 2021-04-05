@@ -39,6 +39,11 @@
     --gray10: #616161;
 }
 
+html {
+/* para poder hacer el efecto con la pagina en el cual arrastra hasta la etiqueta que seleccionamos en el menu */
+    scroll-behavior: smooth; 
+}
+
 body {
 
     color: var(--gray30);
@@ -56,12 +61,18 @@ a {
 header {
     /* --gray10: red; (en caso que tengas que modificar la variable en cierta parte solamente) */
     font-size: 14px;
-    color: var(--gray10);
+    width: 188px;
+    color: rgb(58, 58, 158);
+    position: absolute;
+    background: gray;
+    top: 64px;
+    left: -210px;
 }
 
 header a{ /* es para referirse al a directamente */
 
-    color: var(--gray10);
+    /* color: var(--gray10); */
+    color: rgb(58, 58, 158);
     text-decoration: none;
 }
 
@@ -73,6 +84,12 @@ header a:hover { /* hover es cuando pasas encima de un texto o link como los a*/
 nav details summary { /* es para el titulo del menu */
 
     font-weight: bold;
+    line-height: 24px;
+}
+
+header li {
+
+    margin-bottom: 16px;
 }
 
 h1 {
@@ -81,6 +98,7 @@ h1 {
     /* font-size: 3.75en;  esto seria la unidad en em, seria 60/16 que es el tamaño de la fuente por default*/
     margin-top: 64px;
     margin-bottom: 16px;
+    font-weight: normal;
     /* margin-left: 20px;
     margin-right: 10px; */
 
@@ -96,6 +114,7 @@ h1 {
 hr {
     margin: 64px 0;
     background: red;
+    
 }
 
 h2 {
@@ -110,6 +129,11 @@ h3 {
     margin-top: 16px;
     margin-bottom: 24px;
     font-weight: normal;
+    position: sticky;
+    /* con el sticky simplemente hacemos fijo los h3, con el top fijamos arriba 
+    y con el background hacemos que se limpie el h3(es el truco) */
+    top: 0;
+    background:rgb(158, 153, 153);
 }
 
 pre {
@@ -135,11 +159,36 @@ blockquote {
 }
 
 blockquote span {
-    color: var(--gray10);
+    color: black;
 }
 
 blockquote span::before {
     content: '-';
+}
+
+.header {
+    position: sticky;
+    top: 0;
+}
+
+.header-content {
+    position: relative;
+    background: gray;
+}
+
+.main {
+    background: gray;
+}
+
+.wrapper {
+    width: 902px;
+    margin: auto;
+}
+
+.main-content {
+    padding: 20px;
+    /* background: white; */
+    background: rgb(158, 153, 153);
 }
 
  .debug { /*tecnicas para ver que selector estas agarrando y si es el correcto */
@@ -163,6 +212,7 @@ blockquote span::before {
 .section-content {
     
     margin-top: 164px;
+    position: relative;
 }
 
  .section-content:first-of-type {  /* es para seleccionar solamente el primer section*/
@@ -192,6 +242,14 @@ blockquote span::before {
     margin-top: 40px;
 }
 
+.section-content .dom {
+    width: 860px;
+}
+
+.section-content .css {
+    width: 860px;
+}
+
 .section-content {
 
     counter-reset: titleList;
@@ -199,7 +257,8 @@ blockquote span::before {
 
 .section-content h3 {
     counter-increment: titleList;
-    padding-bottom: 4px;
+    padding-bottom: 8px;
+    color: rgb(58, 58, 158);
 }
 
 .section-content h3::before {  /* colocando pseudoelemento, aqui iria la numeracion */
@@ -209,8 +268,11 @@ blockquote span::before {
 .section-content h3::after { /* colocando pseudoelemento, aqui iria la raya de bajo de los titulos*/
 
     content: '';
-    width: 32px;
+    width: 80px;
     height: 4px;
     background: var(--gray30);
     display: inline-block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
